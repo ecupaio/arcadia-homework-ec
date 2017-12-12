@@ -51,8 +51,11 @@
     <link href="{{ base }}/css/style.css" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <!-- Favicon -->
-    <link rel="icon" href="https://s3.amazonaws.com/frontend-assets.dnc.org/images/D-circle-logo-favicon.png">
+    <link rel="icon" href="">
     <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <!-- Twitter Popup -->
@@ -68,22 +71,100 @@
     {% endif %}
     <div id="wrapper">
         <div id="header">
-            <h1>{{ site.title }}</h1>
+            <div class="logo">
+            </div>
+            <div class="nav">
+            </div>
+            <div class="login-signup">
+            </div>
         </div>
         <div id="main">
-              {% include form.html form-url="//my.democrats.org/page/sapi/bsd-api-test" %}
-              {% include social_share.html button="true" tweet="tweet text comin at ya" url="https://democrats.org" %}
+            {% for section in site.sections %}
+            <div class="section" id="{{ section.id-tag }}">
+                {% if section.title == "Signup" %}
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        {{ section.content }}
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2 signup-col">
+                        <div id="signup">
+                            <div class="signup-header">
+                                Sign Up for Free
+                            </div>
+                            <div class="google-signup">
+                                Sign up free with Google
+                            </div>
+                            <div class="signup-separator">
+                                or
+                            </div>
+                            <div class="signup-form">
+                                <form action="{{ base }}/coming-soon">
+                                <input class="form-input email" type="email" placeholder="Email" />
+                                <input class="form-input password" type="text" placeholder="Password" />
+                                <div class="disclaimer">By clicking Sign up, I agree to the Terms of Service and Privacy Policy.</div>
+                                <input class="form-input submit pure-button" type="submit" value="Sign up for free">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% elsif section.title == 'Benefits' %}
+                <div id="benefits">
+                    {% for benefit in site.benefits %}
+                    <div class="benefit pure-g">
+                        <div class="pure-u-1 pure-u-md-1-2 vid-col">
+                            <div class="benefit-vid" data-vid="{{ benefit.video }}">
+                                <img class="benefit-img" src="{{ base }}{{ benefit.image }}" />
+                            </div>
+                        </div>
+
+                        <div class="pure-u-1 pure-u-md-1-2 copy-col">
+                            <div class="benefit-copy">
+                                <h2>{{ benefit.title }}</h2>
+                                {{ benefit.content }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% elsif section.title == 'CTA' %}
+                <div class="section-inner">
+                    {{ section.content }}
+                    <a class="pure-button" href="{{ section.button }}">Sign up for Free</a>
+                </div>
+                {% elsif section.title == 'Posts' %}
+                <div class="section-inner">
+                    <div class="post-slider">
+                    {% for post in site.posts %}
+                        <div class="post">
+                            <div class="post-img-container">
+                                <img class="post-img" src="{{ base }}{{ post.image }}"/>
+                            </div>
+                            <div class="post-tag">
+                                {{ post.tag | uppercase }}
+                            </div>
+                            <div class="post-title">
+                                {{ post.title }}
+                            </div>
+                            <div class="post-summary">
+                                {{ post.content }}
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+            {% endfor %}
+
         </div>
     </div>
     <div id="footer">
-        <div class="copyright-footer">
-            <div class="copyright-text">
-                <p>Paid for by the Democratic National Committee (202) 863‑8000.</p>
-                <p>This communication is not authorized by any candidate or candidate's committee.</p>
-            </div>
-        </div>
-        <p><a href="https://www.democrats.org/more/privacy-policy" target="_blank">Privacy Policy</a></p>
+
     </div>
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="{{ base }}/site_functions.js"></script>
 </body>

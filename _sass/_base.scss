@@ -70,8 +70,6 @@ a {
 	padding: 1em;
 	width: 100%;
 	.pure-button {
-		text-transform: uppercase;
-		font-weight: bold;
 		width: 100%;
 	}
 }
@@ -90,10 +88,10 @@ $facebook_brand: #3B5998;
 		}
 	}
 	&.buttons {
-		color: $brand_white;
+		color: $white;
 		.tweet-link {
 			.fa-twitter {
-				color: $brand_white;
+				color: $white;
 				@include transition;
 			}
 	        .fa-circle {
@@ -106,13 +104,13 @@ $facebook_brand: #3B5998;
 	            	color: $twitter_brand;
 				}
 	            .fa-circle {
-	                color: $brand_white;
+	                color: $white;
 	            }
 			}
 	    }
 	    .fb-link {
 			.fa-facebook {
-				color: $brand_white;
+				color: $white;
 				@include transition;
 			}
 	        .fa-circle {
@@ -125,7 +123,7 @@ $facebook_brand: #3B5998;
 					color: $facebook_brand;
 				}
 	            .fa-circle {
-	                color: $brand_white;
+	                color: $white;
 	            }
 			}
 	    }
@@ -165,7 +163,7 @@ $facebook_brand: #3B5998;
 input,textarea {
 	&:not([type=submit]):not([type=file]):not([type=radio]):not([type=checkbox]) {
 		width: 100%;
-		padding: 0.5em;
+		padding: 1em;
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		border: 0;

@@ -28,7 +28,18 @@ defaults:
     path: ''
   values:
     layout: index
-# collections:
-#   collection-name:
-#     output: true
-#     permalink: "/"
+- scope:
+    type: 'benefits'
+  values:
+    image: ''
+    video: ''
+- scope:
+    type: 'posts'
+  values:
+    image: ''
+    tag: ''
+collections:
+  sections:
+    output: true
+  benefits:
+    output: true

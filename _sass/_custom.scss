@@ -1,23 +1,15 @@
 //Custom Styles
-//Brand Colors
-$brand_lt_blue: #00AEF3;
-$brand_dk_blue: #0F2446;
-$brand_alt_blue: #00589C;
-$brand_white: #fff;
-$brand_red: #E31818;
-$brand_dk_red: #841618;
-$brand_yellow: #FFDD00;
-$brand_orange: #F15822;
-$brand_gray: #F6F6F6;
-$brand_black: #000;
-$brand_teal: #00a87d;
-$brand_green: #29763B;
-$brand_purple: #A4288C;
-$brand_dk_purple: #4D2073;
+$green: #2dbe60;
+$dk_green: #0d9f40;
+$black: #000;
+$white: #fff;
+$grey: #eef2f3;
+$dk_grey: #989898;
+
 //Theme colors
-$text_color: $brand_dk_blue;
-$primary_color: $brand_lt_blue;
-$secondary_color: $brand_white;
+$text_color: $black;
+$primary_color: $green;
+$secondary_color: $white;
 //Body and Heading text Colors
 $body_txt: $text_color;
 $body_link: $primary_color;
@@ -29,22 +21,22 @@ $footer_txt: $secondary_color;
 $copyright_link: $body_link;
 $copyright_link_hover: $body_link_hover;
 //Header Colors
-$header_bg: $primary_color;
-$header_txt: $secondary_color;
+$header_bg: $secondary_color;
+$header_txt: $text_color;
 //Button Colors
 $button_bg: $primary_color;
 $button_txt: $secondary_color;
-$hover_button_bg: $secondary_color;
-$hover_button_txt: $primary_color;
+$hover_button_bg: $dk_green;
+$hover_button_txt: $secondary_color;
 //BSD Form Colors
 $form_bg: $secondary_color;
 $form_txt: $text_color;
 $form_btn_bg: $primary_color;
 $form_btn_txt: $secondary_color;
 //Mobile Breakpoints
-$size-large: 1024px;
-$size-medium: 768px;
-$size-small: 568px;
+$size-large: 980px;
+$size-medium: 736px;
+$size-small: 480px;
 //Padding for Sections and Grids
 $grid-gutters: 0.5em 1em;
 $header-padding: 1em;
@@ -59,3 +51,59 @@ $transition_duration: .5s;
 @include bodyPadding($body-padding);
 @include footerPadding($footer-padding);
 //Start Theme Customizations below:
+
+#header {
+    border-bottom: 1px solid $grey;
+
+}
+.signup-col {
+    border-left: 1px solid $grey;
+}
+#signup {
+    font-family: $header-font;
+    .google-signup {
+        text-align: center;
+
+        font-weight: bold;
+        background-image: url('../images/Google_G_Logo.svg');
+        background-size: auto 1.25em;
+        background-position: 1em center;
+        background-repeat: no-repeat;
+        border: 1px solid $grey;
+        border-radius: 4px;
+        padding: 0.5em 1em;
+    }
+    .signup-form {
+        padding: 0;
+        .form-input {
+            &:not(.submit) {
+                background: $grey;
+            }
+            border-radius: 4px;
+            margin: 0.5em 0;
+        }
+    }
+}
+#benefits {
+    .vid-col {
+        .benefit-vid {
+            height: 465px;
+            .benefit-img {
+                width: auto;
+                height: 100%;
+            }
+        }
+    }
+    .copy-col {
+        @include flexbox;
+        align-items: center;
+        a {
+            color: $black;
+            border-bottom: 3px solid $green;
+            padding-bottom: 1px;
+            &:hover {
+                color: $green;
+            }
+        }
+    }
+}
