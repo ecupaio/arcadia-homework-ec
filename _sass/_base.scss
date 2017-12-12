@@ -25,12 +25,15 @@ b, strong {
 	font-family: $header-font;
 	font-weight: bold;
 }
-
+.clearfix {
+	clear: both;
+}
 //Links
 a {
 	font-weight: bold;
 	text-decoration: none;
 	color: $body_link;
+	font-family: $header-font;
 	@include transition;
 	&:hover, &:active, &:focus {
 		color: $body_link_hover;

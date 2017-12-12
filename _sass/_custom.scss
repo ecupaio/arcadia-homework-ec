@@ -12,8 +12,8 @@ $primary_color: $green;
 $secondary_color: $white;
 //Body and Heading text Colors
 $body_txt: $text_color;
-$body_link: $primary_color;
-$body_link_hover: darken($primary_color,15%);
+$body_link: $text_color;
+$body_link_hover: $primary_color;
 $heading: $text_color;
 //Footer Colors
 $footer_bg: $primary_color;
@@ -34,16 +34,16 @@ $form_txt: $text_color;
 $form_btn_bg: $primary_color;
 $form_btn_txt: $secondary_color;
 //Mobile Breakpoints
-$size-large: 980px;
-$size-medium: 736px;
-$size-small: 480px;
+$size-large: 1024px;
+$size-medium: 768px;
+$size-small: 568px;
 //Padding for Sections and Grids
 $grid-gutters: 0.5em 1em;
 $header-padding: 1em;
 $body-padding: 1em 3em;
 $body-padding-mobile: 1em;
 $footer-padding: 3em 1em;
-$transition_duration: .5s;
+$transition_duration: .3s;
 //Mixins
 @import "mixins";
 @include gridGutters($grid-gutters);
@@ -53,11 +53,97 @@ $transition_duration: .5s;
 //Start Theme Customizations below:
 
 #header {
-    border-bottom: 1px solid $grey;
 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: $white;
+    z-index:10;
+    font-size: 0.75em;
+    $button_padding: 1em;
+    .nav-bar {
+        border-bottom: 1px solid $grey;
+        padding-bottom: 1em;
+    }
+    .toggle {
+        i {
+            transform: rotate(0deg);
+            @include transition;
+        }
+        &.active {
+            i {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    a {
+        font-weight: normal;
+        &.nav-link {
+            margin: 0 $button_padding;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .logo {
+        float: left;
+        padding: $button_padding;
+        .logo-img {
+            height: 1.5em;
+            width: auto;
+        }
+    }
+    .nav {
+        float: left;
+        font-family: $header-font;
+        padding: $button_padding;
+    }
+
+    .login-signup {
+        float: right;
+        .pure-button {
+            color: $black;
+            background: $white;
+            border: 3px solid $black;
+            padding: $button_padding;
+        }
+        overflow: hidden;
+        .nav-link {
+            width: 0;
+            position: relative;
+            transform: translateX(-100%);
+            display: inline-block;
+            opacity: 0;
+            margin: 0;
+            white-space: nowrap;
+            z-index: -1;
+            &.active {
+                @include transition;
+                width: auto;
+                transform: translateX(0%);
+                opacity: 1;
+                margin: 0 $button_padding;
+            }
+        }
+
+    }
+    .explore-nav {
+        display: none;
+        .nav-grid {
+            .nav-col-list {
+                .nav-list-item {
+                    display: block;
+                }
+            }
+        }
+    }
 }
+
 .signup-col {
     border-left: 1px solid $grey;
+}
+#main {
+    margin-top: 5em;
 }
 #signup {
     font-family: $header-font;

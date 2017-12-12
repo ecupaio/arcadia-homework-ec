@@ -1,6 +1,8 @@
 ---
 title: Signup
 layout: index
+id-tag: signup
+order: 1
 ---
 
 # Meet Evernote, your second brain.
