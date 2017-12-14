@@ -56,6 +56,17 @@ body {
         overflow: hidden;
     }
 }
+.toggle {
+    i {
+        transform: rotate(0deg);
+        @include transition;
+    }
+    &.active {
+        i {
+            transform: rotate(180deg);
+        }
+    }
+}
 #header {
 
     position: fixed;
@@ -69,17 +80,7 @@ body {
         border-bottom: 1px solid $grey;
         padding-bottom: 1em;
     }
-    .toggle {
-        i {
-            transform: rotate(0deg);
-            @include transition;
-        }
-        &.active {
-            i {
-                transform: rotate(180deg);
-            }
-        }
-    }
+
     a {
         font-weight: normal;
         &.nav-link {
@@ -150,6 +151,12 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
+        opacity: 0;
+        @include custom_transition(opacity);
+        &.active {
+            opacity: 1;
+            display: block;
+        }
         .menu-body {
             background: $white;
             text-align: left;
@@ -161,11 +168,17 @@ body {
             .close-menu {
                 position: absolute;
                 right: 3em;
-                top: 2em;
+                top: 1em;
+                font-size: 2em;
             }
             .nav-grid {
                 padding: 1em 3em;
+                max-width: $size-large;
+                margin: auto;
                 .nav-col {
+                    &.social-col {
+                        display: none;
+                    }
                     .nav-col-head {
                         padding: 1em 0;
                         .nav-head-label {
@@ -218,23 +231,20 @@ body {
             text-align: right;
             opacity: 0;
             overflow-y: scroll;
-            @include custom_transition(opacity);
-            &.active {
-                opacity: 1;
-                display: block;
-            }
+
+
             .menu-body {
                 background: $white;
                 display: inline-block;
                 min-height: 100%;
+                max-width: 400px;
                 .menu-login-signup {
                     display: block;
                     padding: 2rem;
-                    .close-menu-container {
-                        margin-bottom: 2rem;
-                        .nav-link {
-                            margin: 0;
-                        }
+
+                    .menu-login {
+                        display: inline-block;
+                        margin: 0 0 2rem;
                     }
                     .pure-button {
                         display: block;
@@ -250,6 +260,7 @@ body {
                             border: 2px solid $black;
                             &:hover {
                                 color: $green;
+                                border: 2px solid $green;
                             }
                         }
 
@@ -259,12 +270,56 @@ body {
                     padding: 0;
                     .nav-col {
                         padding: 0;
-                        border-top: 2px solid $grey;
                         border-bottom: 2px solid $grey;
+                        &:first-child {
+                            border-top: 2px solid $grey;
+                        }
+                        &.social-col {
+                            display: block;
+
+                            font-size: 1.5rem;
+                            .social-col-inner {
+                                padding: 1em;
+                                display: inline-block;
+                                .social-link {
+                                    margin-right: 1em;
+
+                                }
+                            }
+                        }
+                        &.lang-col {
+                            display: block;
+                            border-bottom: none;
+                            padding: 2em;
+                            .lang-select {
+                                color: $black;
+                                i {
+                                    color: $black;
+                                }
+                                @include transition;
+
+                                &:hover {
+                                    cursor: pointer;
+                                    color: $green;
+                                    i {
+                                        color: $green;
+                                    }
+                                }
+
+                            }
+                            .lang-options {
+                                display: none;
+                                .lang {
+                                    margin: 1.5em 0;
+                                }
+                            }
+                        }
                         .nav-col-head {
                             font-size: 1.5em;
                             padding: 1em;
-
+                            &:hover {
+                                cursor: pointer;
+                            }
                             .nav-head-label {
                                 text-transform: uppercase;
                                 font-weight: normal;
@@ -280,7 +335,7 @@ body {
                         }
                         .nav-col-list {
                             display: none;
-                            padding: 1.5em;
+                            padding: 0 1.5em 1.5em;
                             .nav-list-item {
                                 @include transition;
                                 opacity: 0;
@@ -291,9 +346,10 @@ body {
                                 }
                             }
                         }
-                        &.close-col {
-                            display: none;
-                        }
+                    }
+                    .close-menu {
+                        top: 1.25rem;
+                        right: 1em;
                     }
                 }
             }
