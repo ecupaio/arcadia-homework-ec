@@ -98,10 +98,9 @@ $(document).ready(function() {
         $('.vid-overlay').removeClass('active');
         player.destroy();
     });
+    //Language Toggle
     $('.lang-select').click(function() {
         $(this).toggleClass('active');
         $(this).next('.lang-options').slideToggle('300');
     });
-
-
 });

@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5 {
 }
 body {
 	font-family: $body-font;
-	font-size: 14pt;
+	font-size: 12pt;
 	color: $body_txt;
 }
 b, strong {
@@ -149,12 +149,8 @@ $facebook_brand: #3B5998;
 //Footer
 #footer {
 	@include footer_colors;
-	text-align: center;
+
 	clear: both;
-	font-size: 7pt;
-	a, .copyright-text {
-        font-size: 0.75em;
-    }
 	a {
 	    color: $copyright_link;
 	    text-decoration: none;
@@ -162,19 +158,6 @@ $facebook_brand: #3B5998;
 	      color: $copyright_link_hover;
 	    }
   	}
-
-	.copyright-footer {
-		border: 1px solid $footer_txt;
-		width: 75%;
-		margin: auto;
-		display: inline-block;
-		.copyright-text {
-			padding: 1em 2em;
-			p {
-				margin: 0;
-			}
-		}
-	}
 }
 //Form Inputs
 input,textarea {

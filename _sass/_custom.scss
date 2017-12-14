@@ -16,8 +16,8 @@ $body_link: $text_color;
 $body_link_hover: $primary_color;
 $heading: $text_color;
 //Footer Colors
-$footer_bg: $primary_color;
-$footer_txt: $secondary_color;
+$footer_bg: $secondary_color;
+$footer_txt: $text_color;
 $copyright_link: $body_link;
 $copyright_link_hover: $body_link_hover;
 //Header Colors
@@ -39,7 +39,7 @@ $size-medium: 768px;
 $size-small: 568px;
 //Padding for Sections and Grids
 $grid-gutters: 0.5em 1em;
-$header-padding: 1em;
+$header-padding: 0 1em;
 $body-padding: 1em 3em;
 $body-padding-mobile: 1em;
 $footer-padding: 3em 1em;
@@ -51,6 +51,7 @@ $transition_duration: .3s;
 @include bodyPadding($body-padding);
 @include footerPadding($footer-padding);
 //Start Theme Customizations below:
+//universal styles
 body {
     &.active {
         overflow: hidden;
@@ -67,6 +68,80 @@ body {
         }
     }
 }
+//nav grid
+.nav-grid {
+    .nav-col {
+
+        .nav-col-head {
+            padding: 1em 0;
+            font-family: $header-font;
+            .nav-head-label {
+                font-weight: bold;
+            }
+            .nav-col-toggle {
+                display: none;
+            }
+        }
+        .nav-col-list {
+            .nav-list-item {
+                margin-bottom: 1em;
+            }
+        }
+        &.close-col {
+            text-align: right;
+        }
+        .nav-col-list {
+            .nav-list-item {
+                display: block;
+            }
+        }
+    }
+
+}
+//language toggle
+.lang-col {
+    border-bottom: none;
+    padding: 2em;
+    .lang-select {
+        color: $black;
+        i {
+            color: $black;
+        }
+        @include transition;
+
+        &:hover {
+            cursor: pointer;
+            color: $green;
+            i {
+                color: $green;
+            }
+        }
+
+    }
+    .lang-options {
+        display: none;
+        .lang {
+            margin: 1.5em 0;
+            @include transition;
+            &:hover {
+                color: $green;
+                cursor: pointer;
+            }
+        }
+    }
+}
+//social buttons
+.social-col {
+    font-size: 1.5rem;
+    .social-col-inner {
+        display: inline-block;
+        .social-link {
+            margin-right: 1em;
+        }
+    }
+}
+
+//header
 #header {
 
     position: fixed;
@@ -74,11 +149,11 @@ body {
     width: 100%;
     background: $white;
     z-index:10;
-    font-size: 0.75em;
+
     $button_padding: 1em;
     .nav-bar {
         border-bottom: 1px solid $grey;
-        padding-bottom: 1em;
+        padding: 1em 0;
     }
 
     a {
@@ -95,7 +170,7 @@ body {
         float: left;
         padding: $button_padding;
         .logo-img {
-            height: 1.5em;
+            height: 2em;
             width: auto;
         }
     }
@@ -103,6 +178,9 @@ body {
         float: left;
         font-family: $header-font;
         padding: $button_padding;
+    }
+    .nav,.login-signup {
+        line-height: 2em;
     }
 
     .login-signup {
@@ -175,34 +253,9 @@ body {
                 padding: 1em 3em;
                 max-width: $size-large;
                 margin: auto;
-                .nav-col {
-                    &.social-col {
-                        display: none;
-                    }
-                    .nav-col-head {
-                        padding: 1em 0;
-                        .nav-head-label {
-                            font-weight: bold;
-                        }
-                        .nav-col-toggle {
-                            display: none;
-                        }
-                    }
-                    .nav-col-list {
-                        .nav-list-item {
-                            margin-bottom: 1em;
-                        }
-                    }
-                    &.close-col {
-                        text-align: right;
-                    }
-                    .nav-col-list {
-                        .nav-list-item {
-                            display: block;
-                        }
-                    }
+                .social-col, .lang-col {
+                    display: none;
                 }
-
             }
         }
     }
@@ -276,43 +329,12 @@ body {
                         }
                         &.social-col {
                             display: block;
-
-                            font-size: 1.5rem;
                             .social-col-inner {
                                 padding: 1em;
-                                display: inline-block;
-                                .social-link {
-                                    margin-right: 1em;
-
-                                }
                             }
                         }
                         &.lang-col {
-                            display: block;
-                            border-bottom: none;
-                            padding: 2em;
-                            .lang-select {
-                                color: $black;
-                                i {
-                                    color: $black;
-                                }
-                                @include transition;
-
-                                &:hover {
-                                    cursor: pointer;
-                                    color: $green;
-                                    i {
-                                        color: $green;
-                                    }
-                                }
-
-                            }
-                            .lang-options {
-                                display: none;
-                                .lang {
-                                    margin: 1.5em 0;
-                                }
-                            }
+                            display: inline-block;
                         }
                         .nav-col-head {
                             font-size: 1.5em;
@@ -487,4 +509,80 @@ body {
             }
         }
     }
+}
+#footer {
+    .footer-row {
+        border-bottom: 2px solid $grey;
+        &:first-child {
+
+        }
+        @include bp-medium {
+            .pure-g:not(.nav-grid) {
+                text-align: center;
+            }
+
+        }
+    }
+    .nav-grid {
+        .nav-list-link {
+            font-weight: normal;
+        }
+    }
+    .social-lang-grid {
+        .social-col {
+            text-align: right;
+            @include bp-medium {
+                text-align: center;
+            }
+        }
+        .lang-col {
+            .lang-col-inner {
+                line-height: 2.5em;
+                position: relative;
+
+                .lang-options {
+                    text-align: left;
+                    @media only screen and (min-width: $size-medium) {
+                        position: absolute;
+                        bottom: 2.5em;
+                        background: $grey;
+                        width: 100%;
+                        .lang {
+                            margin: 0.25em 0;
+                            background: transparent;
+                            &:hover {
+                                background: $green;
+                                color: $white;
+                            }
+                        }
+                    }
+                    .lang {
+                        margin: 0.25em 0;
+                    }
+
+                }
+            }
+        }
+    }
+    .copyright-grid {
+        .copyright-txt {
+            font-family: $header-font;
+            @include bp-medium {
+                span {
+                    display: block;
+                }
+            }
+        }
+        .copyright-links-col {
+            text-align: right;
+            @include bp-medium {
+                text-align: center;    
+            }
+            .copyright-link {
+                margin-right: 1em;
+            }
+        }
+
+    }
+
 }
