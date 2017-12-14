@@ -51,6 +51,20 @@ a {
 		@include header_colors;
 	}
 }
+//PureCSS Buttons
+.pure-button {
+	border-radius: 4px;
+	background-color: $button_bg;
+	color: $button_txt;
+	white-space: normal;
+	font-family: $header_font;
+	&:hover, &:focus {
+		background-image: none;
+		background-color: $hover_button_bg;
+		color: $hover_button_txt;
+		@include transition;
+	}
+}
 //PureCSS Grids
 /* fix for IE and Firefox responsiveness */
 .pure-g {

@@ -51,7 +51,11 @@ $transition_duration: .3s;
 @include bodyPadding($body-padding);
 @include footerPadding($footer-padding);
 //Start Theme Customizations below:
-
+body {
+    &.active {
+        overflow: hidden;
+    }
+}
 #header {
 
     position: fixed;
@@ -85,6 +89,7 @@ $transition_duration: .3s;
             cursor: pointer;
         }
     }
+
     .logo {
         float: left;
         padding: $button_padding;
@@ -101,24 +106,34 @@ $transition_duration: .3s;
 
     .login-signup {
         float: right;
-        .pure-button {
+        .biz-signup {
             color: $black;
             background: $white;
-            border: 3px solid $black;
+            border: 2px solid $black;
             padding: $button_padding;
+            &.active {
+                color: $white;
+                background: $green;
+                border: 2px solid $green;
+                &:hover {
+                    color: $white;
+                    background: $dk_green;
+                    border: 2px solid $dk_green;
+                }
+            }
         }
         overflow: hidden;
         .nav-link {
             width: 0;
             position: relative;
-            transform: translateX(-100%);
+            transform: translateX(100%);
             display: inline-block;
             opacity: 0;
             margin: 0;
             white-space: nowrap;
             z-index: -1;
             &.active {
-                @include transition;
+                @include custom_transition(opacity, transform);
                 width: auto;
                 transform: translateX(0%);
                 opacity: 1;
@@ -127,16 +142,166 @@ $transition_duration: .3s;
         }
 
     }
-    .explore-nav {
+
+    .menu-nav {
         display: none;
-        .nav-grid {
-            .nav-col-list {
-                .nav-list-item {
-                    display: block;
+        background: $black;
+        opacity: 0.7;
+        min-height: 100vh;
+        .menu-body {
+            background: $white;
+            text-align: left;
+            position: relative;
+            .menu-login-signup {
+                display: none;
+
+            }
+            .close-menu {
+                position: absolute;
+                right: 3em;
+                top: 2em;
+            }
+            .nav-grid {
+                padding: 1em 3em;
+                .nav-col {
+                    .nav-col-head {
+                        padding: 1em 0;
+                        .nav-head-label {
+                            font-weight: bold;
+                        }
+                        .nav-col-toggle {
+                            display: none;
+                        }
+                    }
+                    .nav-col-list {
+                        .nav-list-item {
+                            margin-bottom: 1em;
+                        }
+                    }
+                    &.close-col {
+                        text-align: right;
+                    }
+                    .nav-col-list {
+                        .nav-list-item {
+                            display: block;
+                        }
+                    }
                 }
+
             }
         }
     }
+    .menu-toggle {
+        display: none;
+        float: right;
+        padding: 0.5rem;
+        font-size: 2em;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    //Mobile nav bar
+    @include bp-large {
+        .nav, .login-signup {
+            display: none;
+        }
+
+        .menu-nav {
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: right;
+            opacity: 0;
+            overflow-y: scroll;
+            @include custom_transition(opacity);
+            &.active {
+                opacity: 1;
+                display: block;
+            }
+            .menu-body {
+                background: $white;
+                display: inline-block;
+                min-height: 100%;
+                .menu-login-signup {
+                    display: block;
+                    padding: 2rem;
+                    .close-menu-container {
+                        margin-bottom: 2rem;
+                        .nav-link {
+                            margin: 0;
+                        }
+                    }
+                    .pure-button {
+                        display: block;
+                        width: 100%;
+                        margin-bottom: 1rem;
+                        padding: 1rem;
+                        &.dl-app {
+
+                        }
+                        &.biz-signup {
+                            background: $white;
+                            color: $black;
+                            border: 2px solid $black;
+                            &:hover {
+                                color: $green;
+                            }
+                        }
+
+                    }
+                }
+                .nav-grid {
+                    padding: 0;
+                    .nav-col {
+                        padding: 0;
+                        border-top: 2px solid $grey;
+                        border-bottom: 2px solid $grey;
+                        .nav-col-head {
+                            font-size: 1.5em;
+                            padding: 1em;
+
+                            .nav-head-label {
+                                text-transform: uppercase;
+                                font-weight: normal;
+                                font-family: $header_font;
+                                float: left;
+                            }
+                            .nav-col-toggle {
+                                display: inline-block;
+                                float: right;
+
+                            }
+
+                        }
+                        .nav-col-list {
+                            display: none;
+                            padding: 1.5em;
+                            .nav-list-item {
+                                @include transition;
+                                opacity: 0;
+                            }
+                            &.active {
+                                .nav-list-item {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                        &.close-col {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+        }
+        .menu-toggle {
+            display: inline-block;
+        }
+    }
+
 }
 
 .signup-col {
@@ -144,7 +309,55 @@ $transition_duration: .3s;
 }
 #main {
     margin-top: 5em;
+    position: relative;
+    .vid-overlay {
+        z-index: -1;
+        opacity: 0;
+        padding: 1em;
+        @include custom_transition(opacity);
+        &.active {
+            opacity: 1;
+            @include flexbox;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba($black,0.8);
+        }
+        .vid-container {
+            position: relative;
+            @include bp-medium {
+                width: 100%;
+            }
+            .close-vid {
+                text-align: right;
+                color: $white;
+                margin-bottom: 1em;
+            }
+            .loading-vid {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                color: $white;
+                z-index: 1;
+                font-size: 3em;
+            }
+            #vid-player {
+                z-index: 2;
+                position: relative;
+                @include bp-medium {
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
+
 #signup {
     font-family: $header-font;
     .google-signup {
@@ -171,12 +384,18 @@ $transition_duration: .3s;
     }
 }
 #benefits {
+
+    .benefit-grid {
+        max-width: 1024px;
+        margin: auto;
+    }
     .vid-col {
         .benefit-vid {
             height: 465px;
             .benefit-img {
-                width: auto;
-                height: 100%;
+                width: 100%;
+                height: auto;
+                max-width: 465px;
             }
         }
     }

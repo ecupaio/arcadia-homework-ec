@@ -1,6 +1,7 @@
 ---
-layout: index
 title: Why Deep Work Matters in a Distracted World
+layout: index
+image: http://localhost:4000/min_images/deepwork.jpg
 tag: Tips & Stories
 ---
 

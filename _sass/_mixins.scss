@@ -99,20 +99,7 @@
     color: $button_bg;
   }
 }
-//PureCSS Buttons
-.pure-button {
-	border-radius: 4px;
-	background-color: $button_bg;
-	color: $button_txt;
-	white-space: normal;
-	font-family: $header_font;
-	&:hover, &:focus {
-		background-image: none;
-		background-color: $hover_button_bg;
-		color: $hover_button_txt;
-		@include transition;
-	}
-}
+
 //Breakpoints for mobile
 /* Usage: easily set breakpoints for small, medium, and large screens
 Either pass the px number through individually, or set it as a variable */
