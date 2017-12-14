@@ -211,9 +211,11 @@
                 </div>
                 {% elsif section.title == 'Benefits' %}
                 <div class="section-inner">
-                    {% for benefit in site.benefits %}
+                    {% assign benefits = site.benefits | sort: 'order' %}
+                    {% for benefit in benefits %}
                     {% assign vid-id = benefit.video | remove:'https://' | remove:"watch?v=" | split: '/' %}
-                    <div class="benefit-grid pure-g">
+
+                    <div class="benefit-grid pure-g {% cycle 'odd', 'even' %}">
                         <div class="pure-u-1 pure-u-md-1-2 vid-col">
                             <div class="benefit-vid" data-vid="{{ vid-id[1] }}">
                                 <img class="benefit-img" src="{{ base }}{{ benefit.image }}" />

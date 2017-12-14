@@ -84,6 +84,7 @@ $(document).ready(function() {
             height: '360',
             width: '640',
             videoId: vidId,
+            host: 'https://www.youtube.com',
             playerVars: {
                 controls: 0,
                 rel: 0,
