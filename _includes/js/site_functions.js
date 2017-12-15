@@ -56,10 +56,10 @@ $(document).ready(function() {
         windowWidth = $(window).width();
         if (windowWidth >= 1024) {
             $('body').removeClass('active');
-                $('.nav-col-list').show();
+                $('.header-nav .nav-col-list').show();
         } else {
-            $('.nav-col-list').hide();
-            $('.nav-col-list, .nav-col-toggle').removeClass('active');
+            $('.header-nav .nav-col-list').hide();
+            $('.header-nav .nav-col-list, .nav-col-toggle').removeClass('active');
         }
     });
     //Nav Menu
