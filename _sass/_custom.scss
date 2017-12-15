@@ -449,7 +449,6 @@ body {
     }
     .intro-col {
         .intro-title {
-            
             opacity: 0;
             font-size: 3em;
             @include custom_transition(opacity);
@@ -479,16 +478,45 @@ body {
         }
     }
     .signup-col {
+        .signup-col-inner {
+            max-width: 450px;
+            margin: auto;
+        }
+        .signup-header {
+            margin-top: 0;
+        }
+        .signup-separator {
+            position: relative;
+            text-align: center;
+            padding: 1em 0;
+            .separator-line {
+                background-color: $grey;
+                height: 2px;
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(50%);
+                z-index: 1;
+            }
+            .separator-text {
+                z-index: 2;
+                background: $white;
+                padding: 0 0.5em;
+                position: relative;
+                color: $dk_grey;
+            }
+        }
         .google-signup {
             text-align: center;
-            font-weight: bold;
+            font-family: $header-font;
             background-image: url('../images/Google_G_Logo.svg');
             background-size: auto 1.25em;
             background-position: 1em center;
             background-repeat: no-repeat;
             border: 1px solid $grey;
             border-radius: 4px;
-            padding: 0.5em 1em;
+            padding: 0.5em 1em 0.5em 2.25em;
         }
         .signup-form {
             padding: 0;
@@ -498,8 +526,22 @@ body {
                 }
                 border-radius: 4px;
                 margin: 0.5em 0;
+                &.submit  {
+                    padding: 1em;
+                }
+            }
+            .disclaimer {
+                padding: 1rem 0;
+                font-size: 0.75em;
+                font-family: $header-font;
+                color: $dk_grey;
+                a {
+                    color: darken($dk_grey,15%);
+                    font-weight: bold;
+                }
             }
         }
+
     }
 
 }
@@ -544,6 +586,7 @@ body {
             color: $black;
             border-bottom: 3px solid $green;
             padding-bottom: 1px;
+            font-weight: bold;
             &:hover {
                 color: $green;
             }
