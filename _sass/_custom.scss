@@ -348,6 +348,9 @@ body {
                         }
                         &.lang-col {
                             display: inline-block;
+                            .lang-col-inner {
+                                padding: 1.5em 1em;
+                            }
                         }
                         .nav-col-head {
                             font-size: 1.5em;
