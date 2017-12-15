@@ -5,6 +5,31 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 $(document).ready(function() {
+    //Intro Animation
+    //function introSlider() {
+    console.log($('.intro-slide').length);
+    var slidesLength = $('.intro-slide').length;
+    var titleDelay = slidesLength * 1500;
+    function introSlider() {
+
+    }
+        $('.intro-slide').each(function(i,obj) {
+            setTimeout(function() {
+                $(obj).addClass('active');
+                setTimeout(function() {
+                   $(obj).removeClass('active');
+               }, 1000);
+           }, 1500*i);
+       });
+       setTimeout(function() {
+           $('.intro-title').addClass('active');
+       }, titleDelay);
+
+      //$('.intro-title').removeClass('active').delay(slidesLength*2500).addClass('active');
+
+
+
+    //Post Slider
     $('.post-slider').slick({
         slidesToShow: 3,
         arrows: false,
@@ -33,7 +58,6 @@ $(document).ready(function() {
             $('.nav-link.signup, .biz-signup').removeClass('active');
 
         }
-
     });
     //Close mobile nav
     var windowWidth = $(window).width();
@@ -55,7 +79,6 @@ $(document).ready(function() {
         } else {
             $('.menu-nav').slideDown('300').addClass('active');
         }
-
         $('body').addClass('active');
     });
     function closeMobileMenu() {
@@ -80,7 +103,6 @@ $(document).ready(function() {
     $('.benefit-vid').click(function() {
         $('.vid-overlay').addClass('active');
         var vidId = $(this).data('vid');
-
         player = new YT.Player('vid-player', {
             height: '360',
             width: '640',

@@ -442,28 +442,66 @@ body {
 
 #signup {
     font-family: $header-font;
-    .google-signup {
-        text-align: center;
-
-        font-weight: bold;
-        background-image: url('../images/Google_G_Logo.svg');
-        background-size: auto 1.25em;
-        background-position: 1em center;
-        background-repeat: no-repeat;
-        border: 1px solid $grey;
-        border-radius: 4px;
-        padding: 0.5em 1em;
-    }
-    .signup-form {
-        padding: 0;
-        .form-input {
-            &:not(.submit) {
-                background: $grey;
-            }
-            border-radius: 4px;
-            margin: 0.5em 0;
+    .signup-grid {
+        .pure-u-1 {
+            padding: 0.5em 4em;
         }
     }
+    .intro-col {
+        .intro-title {
+            
+            opacity: 0;
+            font-size: 3em;
+            @include custom_transition(opacity);
+            &.active {
+                display: inline-block;
+                opacity: 1;
+            }
+        }
+        .intro-slider {
+            position: relative;
+            overflow: hidden;
+            min-height: 7em;
+            .intro-slide {
+                font-size: 3em;
+                font-family: $header-font;
+                font-weight: bold;
+                position: absolute;
+                top: 0;
+                transform: translateY(100%);
+                opacity: 0;
+                @include transition;
+                &.active {
+                    transform: translateY(0%);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .signup-col {
+        .google-signup {
+            text-align: center;
+            font-weight: bold;
+            background-image: url('../images/Google_G_Logo.svg');
+            background-size: auto 1.25em;
+            background-position: 1em center;
+            background-repeat: no-repeat;
+            border: 1px solid $grey;
+            border-radius: 4px;
+            padding: 0.5em 1em;
+        }
+        .signup-form {
+            padding: 0;
+            .form-input {
+                &:not(.submit) {
+                    background: $grey;
+                }
+                border-radius: 4px;
+                margin: 0.5em 0;
+            }
+        }
+    }
+
 }
 #benefits {
 
@@ -516,7 +554,7 @@ body {
     .footer-row {
         border-top: 2px solid $grey;
         padding: 1em;
-        
+
         @include bp-medium {
             .pure-g:not(.nav-grid) {
                 text-align: center;
