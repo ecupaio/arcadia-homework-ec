@@ -334,13 +334,13 @@
                     {% for post in site.posts %}
                         <div class="post">
                             <div class="post-img-container">
-                                <img class="post-img" src="{{ base }}{{ post.image }}"/>
+                                <a href="{{ coming-soon}}"><img class="post-img" src="{{ base }}{{ post.image }}"/></a>
                             </div>
                             <div class="post-tag">
                                 {{ post.tag | uppercase }}
                             </div>
                             <div class="post-title">
-                                {{ post.title }}
+                                <a href="{{ coming-soon}}">{{ post.title }}</a>
                             </div>
                             <div class="post-summary">
                                 <p>{{ post.content }}<p>
