@@ -59,7 +59,7 @@ $(document).ready(function() {
                 $('.nav-col-list').show();
         } else {
             $('.nav-col-list').hide();
-            $('.nav-col-list').removeClass('active');
+            $('.nav-col-list, .nav-col-toggle').removeClass('active');
         }
     });
     //Nav Menu
