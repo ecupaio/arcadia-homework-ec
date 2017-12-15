@@ -23,7 +23,7 @@
     <!-- End Google Tag Manager -->
     {% endif %}
     <meta charset="utf-8">
-    {% if page.url == "/error.html" %}
+    {% if page.url == "/error.html" or page.url == "/coming-soon/" %}
     <meta http-equiv="refresh" content="3; url=/">
     {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,7 +68,9 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     {% endif %}
-    {% assign coming-soon = {{ base}}/coming-soon/ %}
+    {% capture coming-soon %}
+    {{ base}}/coming-soon/
+    {% endcapture %}
     <div id="wrapper">
 
         <div id="header">
@@ -258,6 +260,12 @@
                 </div>
             </div>
             {% assign sections = site.sections | sort: 'order' %}
+            {% if page.url == '/coming-soon/' %}
+            <div class="coming-soon">
+                <h1>{{ page.title }}</h1>
+                <div>{{ page.content }}</div>
+            </div>
+            {% else %}
             {% for section in sections %}
             <div class="section" id="{{ section.id-tag }}">
                 {% if section.id-tag == "signup" %}
@@ -347,6 +355,7 @@
 
             </div>
             {% endfor %}
+            {% endif %}
 
         </div>
     </div>
