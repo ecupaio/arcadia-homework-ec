@@ -23,7 +23,7 @@
     <!-- End Google Tag Manager -->
     {% endif %}
     <meta charset="utf-8">
-    {% if page.url == "/error.html" or page.url == "/coming-soon/" %}
+    {% if page.url == "/error.html" %}
     <meta http-equiv="refresh" content="3; url={{ base }}/">
     {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -263,7 +263,6 @@
             {% if page.url == '/coming-soon/' %}
             <div class="coming-soon">
                 <h1>{{ page.title }}</h1>
-                <div>{{ page.content }}</div>
             </div>
             {% else %}
             {% for section in sections %}
