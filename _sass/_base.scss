@@ -16,10 +16,13 @@ h1, h2, h3, h4, h5 {
 	font-family: $header-font;
 	color: $heading;
 }
-body {
+body,p {
 	font-family: $body-font;
 	font-size: 12pt;
 	color: $body_txt;
+}
+div {
+	font-family: $header-font;
 }
 b, strong {
 	font-family: $header-font;
@@ -30,7 +33,6 @@ b, strong {
 }
 //Links
 a {
-	
 	text-decoration: none;
 	color: $body_link;
 	font-family: $header-font;

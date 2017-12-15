@@ -627,10 +627,34 @@ body {
         margin: auto;
         padding: 4em 3em;
         @include bp-medium {
-            padding: 2em 1em; 
+            padding: 2em 1em;
         }
         h1 {
             margin: 0 0 2em 0;
+
+        }
+        .pure-button {
+            padding: 1em 2em;
+        }
+    }
+}
+#posts {
+    .post-slider {
+        .post {
+            padding: 0 2em;
+            .post-img {
+                width: 100%;
+                height: auto;
+            }
+            .post-tag {
+                padding: 2em 0;
+                text-transform: uppercase;
+            }
+            .post-title {
+                font-size: 1.25em;
+                font-weight: bold;
+            }
+
         }
     }
 }

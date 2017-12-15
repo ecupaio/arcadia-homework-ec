@@ -1,5 +1,5 @@
 ---
-title: Meet Evernote, your second brain
+title: Meet Evernote, your second brain.
 layout: index
 id-tag: signup
 order: 1
