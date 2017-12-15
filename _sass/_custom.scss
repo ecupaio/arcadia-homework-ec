@@ -42,7 +42,7 @@ $grid-gutters: 0.5em 1em;
 $header-padding: 0 1em;
 $body-padding: 1em 3em;
 $body-padding-mobile: 1em;
-$footer-padding: 3em 1em;
+$footer-padding: 0;
 $transition_duration: .3s;
 //Mixins
 @import "mixins";
@@ -102,8 +102,10 @@ body {
 .lang-col {
     border-bottom: none;
     padding: 2em;
+
     .lang-select {
         color: $black;
+        font-family: $header-font;
         i {
             color: $black;
         }
@@ -157,7 +159,7 @@ body {
     }
 
     a {
-        font-weight: normal;
+
         &.nav-link {
             margin: 0 $button_padding;
         }
@@ -512,20 +514,14 @@ body {
 }
 #footer {
     .footer-row {
-        border-bottom: 2px solid $grey;
-        &:first-child {
-
-        }
+        border-top: 2px solid $grey;
+        padding: 1em;
+        
         @include bp-medium {
             .pure-g:not(.nav-grid) {
                 text-align: center;
             }
 
-        }
-    }
-    .nav-grid {
-        .nav-list-link {
-            font-weight: normal;
         }
     }
     .social-lang-grid {
@@ -576,10 +572,11 @@ body {
         .copyright-links-col {
             text-align: right;
             @include bp-medium {
-                text-align: center;    
+                text-align: center;
             }
             .copyright-link {
                 margin-right: 1em;
+
             }
         }
 
