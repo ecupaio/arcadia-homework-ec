@@ -6,29 +6,19 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 $(document).ready(function() {
     //Intro Animation
-    //function introSlider() {
-    console.log($('.intro-slide').length);
     var slidesLength = $('.intro-slide').length;
     var titleDelay = slidesLength * 1500;
-    function introSlider() {
-
-    }
-        $('.intro-slide').each(function(i,obj) {
+    $('.intro-slide').each(function(i,obj) {
+        setTimeout(function() {
+            $(obj).addClass('active');
             setTimeout(function() {
-                $(obj).addClass('active');
-                setTimeout(function() {
-                   $(obj).removeClass('active');
-               }, 1000);
-           }, 1500*i);
-       });
-       setTimeout(function() {
-           $('.intro-title').addClass('active');
-       }, titleDelay);
-
-      //$('.intro-title').removeClass('active').delay(slidesLength*2500).addClass('active');
-
-
-
+               $(obj).removeClass('active');
+           }, 1000);
+       }, 1500*i);
+    });
+    setTimeout(function() {
+       $('.intro-title').addClass('active');
+    }, titleDelay);
     //Post Slider
     $('.post-slider').slick({
         slidesToShow: 3,
@@ -49,6 +39,7 @@ $(document).ready(function() {
             }
         ]
     });
+    //Show Signup link
     $(window).scroll(function() {
         var pageTop = $(window).scrollTop();
         var sectionTop = $('#benefits').position().top;
@@ -62,8 +53,12 @@ $(document).ready(function() {
     //Close mobile nav
     var windowWidth = $(window).width();
     $(window).resize(function() {
+        windowWidth = $(window).width();
         if (windowWidth >= 1024) {
             $('body').removeClass('active');
+                $('.nav-col-list').show();
+        } else {
+            $('.nav-col-list').hide();
         }
     });
     //Nav Menu

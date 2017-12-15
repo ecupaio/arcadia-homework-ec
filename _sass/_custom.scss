@@ -570,6 +570,9 @@ body {
     .benefit-grid {
         max-width: 1024px;
         margin: auto;
+        @include bp-medium {
+            text-align: center;
+        }
         &.odd {
             .vid-col {
                 order: 1;
@@ -585,15 +588,33 @@ body {
             .copy-col {
                 order: 1;
             }
+            @include bp-medium {
+                .vid-col {
+                    order: 1;
+                }
+                .copy-col {
+                    order: 2;
+                }
+            }
+
         }
     }
     .vid-col {
         .benefit-vid {
             height: 465px;
+            @include bp-medium {
+                height: 250px;
+            }
+            &:hover {
+                cursor: pointer;
+            }
             .benefit-img {
                 width: 100%;
                 height: auto;
                 max-width: 465px;
+                @include bp-medium {
+                    max-width: 250px;
+                }
             }
         }
 
@@ -601,16 +622,21 @@ body {
     .copy-col {
         @include flexbox;
         align-items: center;
-
-        a {
-            color: $black;
-            border-bottom: 3px solid $green;
-            padding-bottom: 1px;
-            font-weight: bold;
-            &:hover {
-                color: $green;
+        .benefit-copy {
+            h2 {
+                margin-top: 0;
+            }
+            a {
+                color: $black;
+                border-bottom: 3px solid $green;
+                padding-bottom: 1px;
+                font-weight: bold;
+                &:hover {
+                    color: $green;
+                }
             }
         }
+
     }
 }
 //cta section
