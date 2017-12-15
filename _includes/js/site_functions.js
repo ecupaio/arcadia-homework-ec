@@ -59,6 +59,7 @@ $(document).ready(function() {
                 $('.nav-col-list').show();
         } else {
             $('.nav-col-list').hide();
+            $('.nav-col-list').removeClass('active');
         }
     });
     //Nav Menu
