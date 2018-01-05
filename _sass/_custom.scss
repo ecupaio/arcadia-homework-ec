@@ -170,6 +170,12 @@ body {
     .nav-bar {
         border-bottom: 1px solid $grey;
         padding-top: 1em;
+        position: relative;
+        z-index: 11;
+        background: $white;
+        @include bp-large {
+          z-index: 1;
+        }
     }
 
     a {
@@ -246,12 +252,14 @@ body {
         height: 100%;
         opacity: 0;
         z-index: -1;
-        @include custom_transition(opacity, width);
+        @include transform(translateY(-50%));
+        @include custom_transition(opacity, transform);
 
         &.active {
             z-index: 10;
             opacity: 1;
             display: block;
+            @include transform(translateY(0%));
         }
         .menu-body {
             background: $white;
