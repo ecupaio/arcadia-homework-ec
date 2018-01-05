@@ -66,20 +66,20 @@ $(document).ready(function() {
     $('.nav-link.menu').click(function(e) {
         e.preventDefault();
         $(this).toggleClass('active');
-        $('.menu-nav').slideToggle('300').toggleClass('active');
+        $('.menu-nav').toggleClass('active');
     });
     //Nav menu mobile
     $('.menu-toggle').click(function() {
         if (windowWidth <= 1024) {
             $('.menu-nav').addClass('active');
         } else {
-            $('.menu-nav').slideDown('300').addClass('active');
+            $('.menu-nav').addClass('active');
         }
         $('body').addClass('active');
     });
     function closeMobileMenu() {
         $('body, .menu-nav, .nav-link.menu').removeClass('active');
-        $('.menu-nav').slideUp('300');
+
     }
     $('.close-menu').click(function (e) {
         closeMobileMenu();
