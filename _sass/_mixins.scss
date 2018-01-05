@@ -19,6 +19,12 @@
 	-o-transition-timing-function: ease;
 	transition-timing-function: ease;
 }
+//transform
+@mixin transform($prop...) {
+	-webkit-transform: $prop;
+  -ms-transform: $prop;
+  transform: $prop; 
+}
 //Link Underline
 @mixin hover_underline {
 	&:after {
